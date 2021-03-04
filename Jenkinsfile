@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('PULL') {
       steps {
-        git(credentialsId: 'to-haibe-online-backend-repo', branch: 'test', url: 'git@github.com:Hyperstacks-Inc/haibe-online-backend.git')
+        git(credentialsId: 'to-haibe-online-backend-repo', branch: 'test', url: '[SSH GIT]')
       }
     }
 
@@ -59,7 +59,7 @@ pipeline {
 
     stage('DAST') {
       steps {
-        sh 'sudo docker run --rm owasp/zap2docker-stable zap-baseline.py -t http://192.168.2.60:"${DEPLOY_PORT}"  || true'
+        sh 'sudo docker run --rm owasp/zap2docker-stable zap-baseline.py -t http://[DNS]:"${DEPLOY_PORT}"  || true'
       }
     }
 

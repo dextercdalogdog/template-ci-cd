@@ -16,6 +16,7 @@ RUN npm install
 # Bundle app source
 COPY . .
 
+# installing external bin apps
 RUN  apt update && apt install ffmpeg -y
 
 RUN npm run build
